@@ -1,0 +1,14 @@
+{
+  "api": {
+    "web": "http://127.0.0.1:1370",
+    "grpc": "http://127.0.0.1:1371"
+  },
+  "app_settings": {
+    "id": "aurora-launcher",
+    "home_dir": ".aurora-launcher",
+    "window_settings": {
+      "width": 900.0,
+      "height": 500.0
+    }
+  }
+}

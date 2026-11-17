@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package AuroraLauncher.rpc;
+
+service AuroraLauncherService {
+  rpc auth(AuthRequest) returns (AuthResponse);
+  rpc getServers(.google.protobuf.Empty) returns (ServersResponse);
+  rpc getProfile(ProfileRequest) returns (ProfileResponse);
+  rpc getUpdates(UpdateRequest) returns (UpdateResponse);
+  rpc getToken(.google.protobuf.Empty) returns (VerifyResponse);
+}
+
+message AuthRequest {
+  string login = 1;
+  string password = 2;
+}
+message AuthResponse {
+  string username = 1;
+  string userUUID = 2;
+  string accessToken = 3;
+  string token = 4;
+  optional bool isAlex = 5;
+  optional string skinUrl = 6;
+  optional string capeUrl = 7;
+}
+message ServersResponse {
+  repeated Server servers = 1;
+}
+message Server {
+  string profileUUID = 1;
+  ServerConfig serverInfo = 2;
+}
+message ProfileRequest {
+  string uuid = 1;
+}
+message ProfileResponse {
+  int32 configVersion = 1;
+  string uuid = 2;
+  int32 sortIndex = 3;
+  repeated ServerConfig servers = 4;
+  int32 javaVersion = 5;
+  string version = 6;
+  string clientDir = 7;
+  string assetIndex = 8;
+  repeated ProfileLibrary libraries = 9;
+  string gameJar = 10;
+  string mainClass = 11;
+  repeated string jvmArgs = 12;
+  repeated string clientArgs = 13;
+  repeated string update = 14;
+  repeated string updateVerify = 15;
+  repeated string updateExclusions = 16;
+  string whiteListType = 17;
+  optional int32 whiteListPermisson = 18;
+  optional string whiteListUUIDs = 19;
+}
+message ServerConfig {
+  string title = 2;
+  optional string hostname = 3;
+  optional string ip = 4;
+  optional int32 port = 5;
+}
+message ProfileLibrary {
+  string path = 1;
+  string sha1 = 2;
+  string type = 3;
+  repeated LibraryRule rules = 4;
+  optional bool ignoreClassPath = 5;
+}
+message LibraryRule {
+  string action = 1;
+  optional SystemOs os = 2;
+}
+message SystemOs {
+  string name = 1;
+  optional string arch = 2;
+  optional string version = 3;
+}
+message UpdateRequest {
+  string dir = 1;
+}
+message UpdateResponse {
+  repeated HashedFile hashedFile = 1;
+}
+message HashedFile {
+  string path = 1;
+  int32 size = 2;
+  string sha1 = 3;
+}
+message VerifyResponse {
+  string token = 1;
+}
