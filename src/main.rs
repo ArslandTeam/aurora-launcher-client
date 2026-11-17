@@ -65,9 +65,11 @@ fn main() -> iced::Result {
         })
         .window(Settings {
             size: Size {
-                width: CONFIG.window_settings.width,
-                height: CONFIG.window_settings.height,
+                width: CONFIG.app_settings.window_settings.width,
+                height: CONFIG.app_settings.window_settings.height,
             },
+            fullscreen: CONFIG.app_settings.window_settings.fullscreen,
+            resizable: CONFIG.app_settings.window_settings.resizable,
             ..Default::default()
         })
         .run()

@@ -4,8 +4,11 @@ version = "0.0.1"
 edition = "2024"
 
 [dependencies]
+hex = "0.4.3"
 iced = { version = "0.14.0", features = ["hot", "image", "tokio"] }
 prost = "0.14.6"
+rand = "0.10.4"
+rsa = { version = "0.10.0", features = ["hazmat"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 tokio = { version = "1", features = ["rt-multi-thread", "macros"] }

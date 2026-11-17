@@ -8,7 +8,9 @@
     "home_dir": ".aurora-launcher",
     "window_settings": {
       "width": 900.0,
-      "height": 500.0
+      "height": 500.0,
+      "fullscreen": false,
+      "resizable": false
     }
   }
 }
